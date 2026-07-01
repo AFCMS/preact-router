@@ -1,0 +1,65 @@
+{
+    "name": "@afcms/preact-router",
+    "version": "0.0.0",
+    "description": "A starter for creating a TypeScript package.",
+    "homepage": "https://github.com/AFCMS/preact-router#readme",
+    "bugs": {
+        "url": "https://github.com/AFCMS/preact-router/issues"
+    },
+    "license": "MIT",
+    "author": "AFCMS <afcm.contact@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AFCMS/preact-router.git"
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./package.json": "./package.json"
+    },
+    "scripts": {
+        "build": "tsdown",
+        "dev": "tsdown --watch",
+        "test": "vitest",
+        "typecheck": "tsc --noEmit",
+        "release": "bumpp",
+        "prepublishOnly": "pnpm run build",
+        "format": "oxfmt",
+        "format:check": "oxfmt --check",
+        "lint": "oxlint"
+    },
+    "devDependencies": {
+        "@arethetypeswrong/core": "^0.18.4",
+        "@types/node": "^25.6.2",
+        "@typescript/native-preview": "7.0.0-dev.20260509.2",
+        "bumpp": "^11.1.0",
+        "oxfmt": "^0.57.0",
+        "oxlint": "^1.72.0",
+        "oxlint-tsgolint": "^0.24.0",
+        "publint": "^0.3.21",
+        "tsdown": "^0.22.0",
+        "typescript": "^6.0.3",
+        "vitest": "^4.1.5"
+    },
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "^11",
+            "onFail": "error"
+        },
+        "runtime": {
+            "name": "node",
+            "version": "^24",
+            "onFail": "error"
+        }
+    },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.cts"
+}

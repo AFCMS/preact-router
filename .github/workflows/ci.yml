@@ -1,0 +1,72 @@
+---
+name: CI
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/krypton
+          cache: pnpm
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Type Check
+        run: pnpm run typecheck
+
+      - name: Tests
+        if: false
+        run: pnpm run test
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Format
+        run: pnpm run format:check
+
+      - name: Dry Run Publish on NPM
+        if: false # "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
+        run: pnpm publish --provenance --access public --dry-run --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Dry Run Publish on JSR
+        if: "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
+        run: pnpx jsr publish --dry-run
+
+      - name: Publish on NPM
+        if: "startsWith(github.ref, 'refs/tags/')"
+        run: pnpm publish --provenance --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish on JSR
+        if: "startsWith(github.ref, 'refs/tags/')"
+        run: pnpx jsr publish
