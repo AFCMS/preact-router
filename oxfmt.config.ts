@@ -11,4 +11,5 @@ export default defineConfig({
       },
     },
   ],
+  ignorePatterns: ["dist", "node_modules", "coverage", "build", ".agents"],
 });

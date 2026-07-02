@@ -6,5 +6,6 @@ export default defineConfig({
       enabled: true,
       provider: "v8",
     },
+    include: ["tests/**/*.test.ts"],
   },
 });

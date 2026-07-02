@@ -1,0 +1,16 @@
+{
+    "hooks": {
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "pnpm run format",
+                        "timeout": 5,
+                        "statusMessage": "Oxfmt"
+                    }
+                ]
+            }
+        ]
+    }
+}

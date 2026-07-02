@@ -9,7 +9,13 @@ export default defineConfig({
   platform: "browser",
   exports: true,
   publint: {
+    enabled: true,
     level: "error",
+    strict: true,
   },
-  attw: true,
+  attw: {
+    enabled: true,
+    level: "error",
+    profile: "esm-only",
+  },
 });
