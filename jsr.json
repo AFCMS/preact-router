@@ -4,6 +4,13 @@
     "license": "MIT",
     "exports": "./src/index.ts",
     "publish": {
-        "include": ["src/**", "README.md", "LICENSE"]
+        "include": [
+            "src/index.ts",
+            "src/exec.ts",
+            "src/lazy.ts",
+            "src/utils.ts",
+            "README.md",
+            "LICENSE"
+        ]
     }
 }
