@@ -4,6 +4,7 @@ export default defineConfig({
   options: {
     typeAware: true,
   },
+  ignorePatterns: ["dist", "node_modules", "coverage", "build", ".agents", "old"],
   jsPlugins: ["@e18e/eslint-plugin"],
   rules: {
     "oxc/no-barrel-file": "error",
