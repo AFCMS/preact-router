@@ -1,7 +1,7 @@
 {
     "name": "@afcms/preact-router",
     "version": "0.0.0",
-    "description": "A starter for creating a TypeScript package.",
+    "description": "A minimalistic Navigation API based router for Preact.",
     "homepage": "https://github.com/AFCMS/preact-router#readme",
     "bugs": {
         "url": "https://github.com/AFCMS/preact-router/issues"
@@ -24,7 +24,8 @@
     "scripts": {
         "build": "tsdown",
         "dev": "tsdown --watch",
-        "test": "vitest",
+        "test": "vitest --run",
+        "test:watch": "vitest",
         "typecheck": "tsc --noEmit",
         "release": "bumpp",
         "prepublishOnly": "pnpm run build",
@@ -34,16 +35,22 @@
     },
     "devDependencies": {
         "@arethetypeswrong/core": "^0.18.4",
+        "@e18e/eslint-plugin": "^0.5.1",
         "@types/node": "^25.6.2",
-        "@typescript/native-preview": "7.0.0-dev.20260630.1",
+        "@typescript/native-preview": "7.0.0-dev.20260701.1",
+        "@vitest/coverage-v8": "^4.1.9",
         "bumpp": "^11.1.0",
         "oxfmt": "^0.57.0",
         "oxlint": "^1.72.0",
         "oxlint-tsgolint": "^0.24.0",
+        "preact": "^10.29.3",
         "publint": "^0.3.21",
         "tsdown": "^0.22.3",
         "typescript": "^6.0.3",
         "vitest": "^4.1.9"
+    },
+    "peerDependencies": {
+        "preact": "^10"
     },
     "devEngines": {
         "packageManager": {
