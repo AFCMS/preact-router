@@ -4,7 +4,7 @@ export default defineConfig({
   format: ["esm"],
   sourcemap: true,
   dts: {
-    tsgo: true,
+    generator: "tsgo",
   },
   platform: "browser",
   exports: true,
